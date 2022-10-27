@@ -1,0 +1,63 @@
+The application is a Daily Assistant named "Travis" who helps the user prepare for their day by allowing them to 
+check the daily weather by city and create their own To Do list.  Each user will be able to create a new item on their to do list
+and set a priority, category, and due date for each item made possibe through ion-datetime component. 
+
+Tech: Angular, Ionic SDK, OpenMaps Library.
+API: OpenMap API and Ionic Modal
+
+Using a free API from openweather.org - specifically the Current Weather Data, 
+I was able to get access for over 200,000 cities, which pulled in the data in JSON, XML, and HTML formats. 
+
+1.The Weather Feature: 
+
+--This is comprised of 2 main pages:
+
+a. environment: which brings in the map API service (environment.ts) 
+b. home: which manipulates the contents of that API service using a component home.page.ts.
+        - home.html is where we see ionic and the angular directives make magic.
+
+aa. (environment.ts) I included the API Key and API URL for the map inside the environment.ts -- similar to creating a service file. Since this was the only external API being called for this project. If multiple services were being used, I would've created a separate service file. 
+
+bb. Inside (home.ts) file, I imported the HttpClient and calling HttpClient inside the constructor in order to obtain that external data.
+
+I created the loadData() function and passed int the API URL and API KEY variables (which were declared above) in order to construct the URL and get the request from the OpenWeather API. I made sure to use the backticks to construct the URL we make a request to. 
+
+When looking at the open weather API documentation, we can see: 
+a1. the main[] parameters: temp, humidity, pressure, etc.
+a2. the name[] parameters: for the searchbar to have its own name
+a3. inside console -> JSON -> weather, we see that weather gives us an array at index 0[],  we can get all info
+a4. list of weather condition codes with icons. From here we obtain the url provided to obtain the icon related to the weather. 
+
+--Inside the (home.page.html), I was able to use the following parts learned in class: 
+b1. ngModel binding: used to bind the values of my searchBar to obtain the input from the user when entering the city. 
+b2. ngModelChange: to listen for changes to the input from the user. Since this is the output of the ngModel directive, it needs to be used together. 
+b3. *ngIf: similar to the features provided by deBounceTime, I created a variable named loading to simplify the ability for the page to render after the used enters a city, if not (loading = true) and the page will be in "loading" status. 
+    I used the ngIf in the HTML so that this directive could remove the HTML element for the entire div that contains the weather details. 
+b4. pipes were used to fix the format of dates and temperatures which were originally in Kelvin. 
+b5. ionic features were implemented all throughout. 
+
+2.The To Do List Feature: 
+
+--This is comprised of 2 main pages: 
+    a. one which renders a to do list (packingList page)
+    b. another which renders an add-item form (add-item page)
+
+aa. packingList page: 
+For this .ts page, I was able to create a function to add a task. 
+The Modal Controller which is the dialog that appears on top of the app as a plus. 
+
+Following the ionic documentation, add the modal controller in the constructor
+and tell is to open the addItemPage (which is the page dedicated to add a task), 
+then after Using the modal.OnDismiss, I was able to push in a newly created  onto the app. 
+Modal Controller comes in the form of a popup, form, or alert. It uses create() method. Customize by setting modal options.
+
+
+
+3. Ionic Storage: 
+npm i cordova-sqlite-storage 
+npm install --save @ionic/storage-angular
+
+Add this to imports list in NgModule in app.module.ts
+
+
+

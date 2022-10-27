@@ -1,0 +1,15 @@
+Hello! 
+
+This project was created for CS701 BU's Final Project requirement by Jessica Sepulveda in Oct. 2022
+
+This is an app using the Ionic SDK with Angular Framework. 
+This app was made possible with the help of: CS701 samples, past homeworks, Ionic's magnificent documentation, and lots of coffee.
+
+
+To run the application: 
+1.To install all packages necessary, in Terminal:  npm install -g@ionic/cli  
+2.Right click into sepulveda-cs701project and open in integrated terminal 
+3.ionic serve to run application in localhost. browser window will open. 
+
+
+

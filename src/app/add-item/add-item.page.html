@@ -1,0 +1,49 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>Add a New Task</ion-title>
+    <ion-icon name = "close" slot = "end" size = "large" class = "ion-padding" (click) ="dismiss()"></ion-icon>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+<ion-card>
+  <ion-item>
+    <ion-textarea [(ngModel)] ="taskName" placeholder="Write your next task here"></ion-textarea>
+  </ion-item>
+
+<ion-item>
+  <ion-icon name ="warning-outline" slot = "start"></ion-icon>
+  <ion-label>Priority</ion-label>
+  <ion-select [(ngModel)] = "taskPriority" > <!--ion-select gives us the form controls to select an option from a set -->
+    <ion-select-option value = "Low">Low</ion-select-option>
+    <ion-select-option value = "Middle">Middle</ion-select-option>
+    <ion-select-option value = "High">High</ion-select-option>
+  </ion-select>
+</ion-item>
+
+<ion-item>
+  <ion-icon name ="pricetag-outline" slot = "start"></ion-icon>
+
+  <ion-label>Category</ion-label>
+  <span>{{taskCategory}}</span> <!--this will allow us to pass the variables in the taskCategory() for each category at said index -->
+  </ion-item>
+
+  <ion-item>
+    <ion-chip *ngFor = "let category of categories; let i = index" (click)= "selectedCategory(i)"> <!--using ngFor to iterate through the categories array at said index from add-item.ts file -->
+      <ion-label>{{category}}</ion-label> <!--we use {{}} instead of no curly braces because we want to be able to bring in the category name from the array-->
+
+    </ion-chip>
+  </ion-item>
+
+<ion-item>
+  <ion-icon name = "calendar-outline" slot="start"></ion-icon>
+  <ion-label>Due Date</ion-label>
+  <ion-datetime [(ngModel)] ="taskDate" displayFormat = "D MMM YYYY H:mm" ></ion-datetime> <!--ion is case sensitive, dateTime will not work-->
+</ion-item>
+
+
+<ion-button class = "ion-margin" expand ="block" (click)= "addTask()">Add Task</ion-button>
+</ion-card>
+
+
+</ion-content>

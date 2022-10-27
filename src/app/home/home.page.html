@@ -1,0 +1,74 @@
+
+  <ion-header>
+    <ion-toolbar>
+     <ion-item lines = "none">
+      <ion-label class = "title" style = "font-weight: 800px; font-size: 3em;">
+  Today's Weather
+  <p style = "font-weight: 400; color: #BD7954"></p>
+      </ion-label>
+    </ion-item>
+    </ion-toolbar>
+  </ion-header>
+
+<ion-content [fullscreen]="true">
+  <ion-searchbar [(ngModel)]="cityName" (ngModelChange)="loadData()" class="searchBar" animated="true" placeholder="Search by City"></ion-searchbar>
+
+
+  <div *ngIf = "!loading">  <!--if the page has not loaded, nothing will show-->
+  <ion-card class = "cardStyle">
+
+    <ion-item lines = "none">
+      <p style = "font-weight: 500; color: white">Today's Date:  </p>
+      <ion-label id= "date" slot = "end">{{ todayDate | date: "EEE dd MMM"}}</ion-label>
+    </ion-item>
+
+
+    <ion-item lines = "none">
+      <span id = "temp">{{ ( 1.8 * (weatherTemp?.temp - 273) + 32). toFixed(0)}}</span> <!--converting kelvin to Fahrenheit using formula F = 1.8(K-273) + 32-->
+      <span>ᵒ F</span> <!--used superscript generator from fontvilla.com-->
+      <img slot = "end" width ="180px" height="180" [src]= weatherIcon>
+    </ion-item>
+
+    <ion-item>
+      <ion-icon id = "locationIcon" name= "location"> </ion-icon>
+        <span>{{cityName}}</span>
+    </ion-item>
+  </ion-card>
+
+  <ion-card class = "cardStyle">
+    <ion-item>
+      <span>
+        Maximum Temp:
+      </span>
+      <span slot = "end">{{ ( 1.8 * (weatherTemp?.temp_max - 273) + 32). toFixed(0) }}ᵒ F</span> <!--in console: look at the syntax of json for "main", follow same syntax: temp_max-->
+    </ion-item>
+
+   <ion-item>
+    <span>
+      Minimum Temp:
+    </span>
+    <span slot = "end">{{ ( 1.8 * (weatherTemp?.temp_min - 273) + 32). toFixed(0) }}ᵒ F</span>
+  </ion-item>
+
+   <ion-item>
+    <span>
+      Humidity
+    </span>
+    <span slot = "end">{{weatherTemp.humidity}}%</span>
+  </ion-item>
+
+  </ion-card>
+
+</div> <!--creating a div for our *ngIf !loading to get all weather data once the user inputs the city in searchBar  -->
+
+<div *ngIf = "loading" class = "noData">  <!--This will appear on the page when the page is loading, promping the user to enter a city-->
+  
+  <div class = "text"><i>Please enter a city above to obtain the weather</i></div>
+
+  <div class = "landingPic">
+    <img src="/assets\weatherSearchLoading.jpg"/>
+</div>
+  
+</div>
+
+</ion-content>

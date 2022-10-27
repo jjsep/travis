@@ -1,0 +1,84 @@
+.title{
+  font-weight: bolder;
+  color:#677db7;
+}
+
+#container {
+  text-align: center;
+
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+#container strong {
+  font-size: 20px;
+  line-height: 26px;
+}
+
+#container p {
+  font-size: 16px;
+  line-height: 22px;
+
+  color: #8c8c8c;
+
+  margin: 0;
+}
+
+#container a {
+  text-decoration: none;
+}
+
+.searchBar{
+  --ion-background-color: #677db7;
+  color: white;
+}
+
+.cardStyle{
+  border-radius: 20px;
+  --ion-background-color: #677db7;
+
+  span{
+    color: white;
+    font-weight: 300;
+  }
+
+  #temp{
+    font-weight: 300;
+    font-size: 4em;
+    margin: 5px;
+  }
+
+  #locationIcon{
+    color: #fb5012;
+  }
+
+  #date{
+    color: white;
+  }
+}
+
+.text{
+  margin: 20px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  font-weight: bold;
+  color: black;
+  font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif ;
+
+}
+
+.landingPic{
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 5px;
+  width: 30%;
+  height: 30%;
+  opacity: 7%;
+
+}
